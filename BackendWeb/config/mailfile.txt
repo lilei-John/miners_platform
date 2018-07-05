@@ -1,0 +1,13 @@
+Warning Description
+1:offline
+2:error
+3:low mhs
+4:zero mhs
+5:ip conflict
+6:fan1 stopped
+7:fan1_error
+8:fan2_stopped
+9:fan2_error
+10:temp warm
+
+IP: 192.168.6.54 MAC: 0C:B2:B7:A2:E8:D5 ERRNO: -1 DATE: 2018-07-03 10:33:38

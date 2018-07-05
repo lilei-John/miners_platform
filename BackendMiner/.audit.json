@@ -1,0 +1,379 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "./.audit.json",
+    "files": [
+        {
+            "date": 1529043370165,
+            "name": "broker-2018-06-15-14.log",
+            "hash": "433b2efdc8d6cf4af0a4e675602988ad"
+        },
+        {
+            "date": 1529043370167,
+            "name": "db-2018-06-15-14.log",
+            "hash": "181a41689d2946ec7dad73ca75fbbaf2"
+        },
+        {
+            "date": 1529043499956,
+            "name": "broker-2018-06-15-14.log",
+            "hash": "a1acefdacf944257dbe94fd429ea6750"
+        },
+        {
+            "date": 1529043499959,
+            "name": "db-2018-06-15-14.log",
+            "hash": "2b5874566e258874317a162066c637b8"
+        },
+        {
+            "date": 1529043751057,
+            "name": "broker-2018-06-15-14.log",
+            "hash": "d36d5febbb536c1da1dcdfea4beea0d6"
+        },
+        {
+            "date": 1529043751066,
+            "name": "db-2018-06-15-14.log",
+            "hash": "3a64593bf4bf319018bc32e994efe533"
+        },
+        {
+            "date": 1529042329144,
+            "name": "broker-2018-06-15-13.log",
+            "hash": "e71bcb232a62a1d8fbc6a078ee750c27"
+        },
+        {
+            "date": 1529042329146,
+            "name": "db-2018-06-15-13.log",
+            "hash": "74d1a54e3c036dd72a016aa653485145"
+        },
+        {
+            "date": 1529042393082,
+            "name": "broker-2018-06-15-13.log",
+            "hash": "f90d27d4ed0897386e1538086d793265"
+        },
+        {
+            "date": 1529042393096,
+            "name": "db-2018-06-15-13.log",
+            "hash": "16e91f223122381c5f44174febfcc88d"
+        },
+        {
+            "date": 1529042400135,
+            "name": "broker-2018-06-15-14.log",
+            "hash": "76a075808f36cd164d527c23250b8fbb"
+        },
+        {
+            "date": 1529042400144,
+            "name": "db-2018-06-15-14.log",
+            "hash": "90e4f847395bf4f35e83244b46c64f72"
+        },
+        {
+            "date": 1529042378487,
+            "name": "broker-2018-06-15.log",
+            "hash": "bc33852b0413d0799bde8870f79a07d1"
+        },
+        {
+            "date": 1529042378495,
+            "name": "db-2018-06-15.log",
+            "hash": "2a7b77ec1e081339205f5074ab652f0f"
+        },
+        {
+            "date": 1529078384596,
+            "name": "broker-2018-06-15.log",
+            "hash": "d5f23d7d4a1137d1e0cf02e4550faedb"
+        },
+        {
+            "date": 1529078384609,
+            "name": "db-2018-06-15.log",
+            "hash": "7b09e4a0ad08f231ad5d0529e1fa6a31"
+        },
+        {
+            "date": 1529078400656,
+            "name": "broker-2018-06-16.log",
+            "hash": "fc9c7254aa2433740d5e891c3843593c"
+        },
+        {
+            "date": 1529078400657,
+            "name": "db-2018-06-16.log",
+            "hash": "dbd9bad098891a0acffed183afb75578"
+        },
+        {
+            "date": 1529044773022,
+            "name": "broker-2018-06-15.log",
+            "hash": "d04c117f5e0d30674d512d7b879cfd39"
+        },
+        {
+            "date": 1529044773027,
+            "name": "db-2018-06-15.log",
+            "hash": "b69a189311dac5b9c876dda54edfde19"
+        },
+        {
+            "date": 1529044843445,
+            "name": "broker-2018-06-15.log",
+            "hash": "047887dab2d872bdcde8e7e5267e7ca6"
+        },
+        {
+            "date": 1529044843449,
+            "name": "db-2018-06-15.log",
+            "hash": "30e1a6e74d7c9faad9f077b5c43593a6"
+        },
+        {
+            "date": 1529044871348,
+            "name": "broker-2018-06-15.log",
+            "hash": "2ee1dc70d11ceef1c547fac1e7b636a5"
+        },
+        {
+            "date": 1529044871357,
+            "name": "db-2018-06-15.log",
+            "hash": "f1c9a21ecce791b37341597fb9211e49"
+        },
+        {
+            "date": 1529044895911,
+            "name": "broker-2018-06-15.log",
+            "hash": "2bcb6788ca41db502b9bf20d2eab6868"
+        },
+        {
+            "date": 1529044895914,
+            "name": "db-2018-06-15.log",
+            "hash": "db61e757cbed53803bb4359efb385025"
+        },
+        {
+            "date": 1529044907298,
+            "name": "broker-2018-06-15.log",
+            "hash": "96fa7ecce69b3992f712833a309ae826"
+        },
+        {
+            "date": 1529044907318,
+            "name": "db-2018-06-15.log",
+            "hash": "68597c2013bcf2c3aa9e2cac9633a338"
+        },
+        {
+            "date": 1529045021976,
+            "name": "broker-2018-06-15.log",
+            "hash": "36eab2aad31f96e8c6ef0bee7f3ff300"
+        },
+        {
+            "date": 1529045021980,
+            "name": "db-2018-06-15.log",
+            "hash": "dd20a7268fc42786933c907c18fc33f7"
+        },
+        {
+            "date": 1529045043360,
+            "name": "broker-2018-06-15.log",
+            "hash": "b48346c777a270f1d7d75717cbc361b8"
+        },
+        {
+            "date": 1529045043364,
+            "name": "db-2018-06-15.log",
+            "hash": "7cfdaaf78257a10151842b4b2c5600d9"
+        },
+        {
+            "date": 1529045072080,
+            "name": "broker-2018-06-15.log",
+            "hash": "f36bcddae2a96581de750b1e3f236792"
+        },
+        {
+            "date": 1529045072088,
+            "name": "db-2018-06-15.log",
+            "hash": "b09025d53214b94d87a2b86b055ac76e"
+        },
+        {
+            "date": 1529045381120,
+            "name": "broker-2018-06-15.log",
+            "hash": "256c163677f929f482180af9a378e035"
+        },
+        {
+            "date": 1529045381138,
+            "name": "db-2018-06-15.log",
+            "hash": "1f0aadc8c012607262077d362b5f9f46"
+        },
+        {
+            "date": 1529045507077,
+            "name": "broker-2018-06-15.log",
+            "hash": "9d49035f2c8891cfad83d45bce0e300b"
+        },
+        {
+            "date": 1529045507090,
+            "name": "db-2018-06-15.log",
+            "hash": "1a46591aa602095e25ab0a58d3798673"
+        },
+        {
+            "date": 1529045551766,
+            "name": "broker-2018-06-15.log",
+            "hash": "373d033824c5908cf5c12011ee0f8902"
+        },
+        {
+            "date": 1529045551779,
+            "name": "db-2018-06-15.log",
+            "hash": "25cd259c2d0f3860442761154d36385c"
+        },
+        {
+            "date": 1529045602370,
+            "name": "broker-2018-06-15.log",
+            "hash": "0878bb6b782c1972030c34341bdbe97b"
+        },
+        {
+            "date": 1529045602380,
+            "name": "db-2018-06-15.log",
+            "hash": "56619552e1eaebb4345ce78145eb78e8"
+        },
+        {
+            "date": 1529046750205,
+            "name": "broker-2018-06-15.log",
+            "hash": "2201fb9786a7c63538b4816ca12e3ec2"
+        },
+        {
+            "date": 1529046750207,
+            "name": "db-2018-06-15.log",
+            "hash": "8c76da6cfa4ef87e09a14a7df516643d"
+        },
+        {
+            "date": 1529047644565,
+            "name": "broker-2018-06-15.log",
+            "hash": "9f7ebc614f26a18969789e6d95f0d1fd"
+        },
+        {
+            "date": 1529047644571,
+            "name": "db-2018-06-15.log",
+            "hash": "a3fa5f35a2ffd868a56e047725ead862"
+        },
+        {
+            "date": 1529047797557,
+            "name": "broker-2018-06-15.log",
+            "hash": "f83b482e113081cd4f08dd529bf77d1d"
+        },
+        {
+            "date": 1529047797560,
+            "name": "db-2018-06-15.log",
+            "hash": "bbdde9761a92daec7daed24de1d71314"
+        },
+        {
+            "date": 1529047813238,
+            "name": "broker-2018-06-15.log",
+            "hash": "1f29aac23f6ba588741b11b7da8a60a3"
+        },
+        {
+            "date": 1529047813241,
+            "name": "db-2018-06-15.log",
+            "hash": "cc4d40576cebd94ed9c12ea2992d1b3d"
+        },
+        {
+            "date": 1529047924030,
+            "name": "broker-2018-06-15.log",
+            "hash": "35ff13d6cd7d671e45bd32249a34a2f6"
+        },
+        {
+            "date": 1529047924043,
+            "name": "db-2018-06-15.log",
+            "hash": "0d41768f0c3e93621a686bf06f4f823f"
+        },
+        {
+            "date": 1529048090906,
+            "name": "broker-2018-06-15.log",
+            "hash": "14529bd0c564fc0b3b48ff17ab60ad06"
+        },
+        {
+            "date": 1529048090915,
+            "name": "db-2018-06-15.log",
+            "hash": "c29761817734ef53afc50a1ae7aa8c6c"
+        },
+        {
+            "date": 1529048324887,
+            "name": "broker-2018-06-15.log",
+            "hash": "1ccb5d3a1e138749358f70fd06a76ff3"
+        },
+        {
+            "date": 1529048324892,
+            "name": "db-2018-06-15.log",
+            "hash": "9ea39c32f2310071e32356a634bdca17"
+        },
+        {
+            "date": 1529048352492,
+            "name": "broker-2018-06-15.log",
+            "hash": "0addfeeefe2ac7471c68ce1fb4a300c6"
+        },
+        {
+            "date": 1529048352506,
+            "name": "db-2018-06-15.log",
+            "hash": "613b8351053e3272210b246fb7393bae"
+        },
+        {
+            "date": 1529048406325,
+            "name": "broker-2018-06-15.log",
+            "hash": "5a4316c73fa66a0d255dfda0676c1c5b"
+        },
+        {
+            "date": 1529048406337,
+            "name": "db-2018-06-15.log",
+            "hash": "cb8a1a5b607dad34112f46896acfe6d7"
+        },
+        {
+            "date": 1529048437003,
+            "name": "broker-2018-06-15.log",
+            "hash": "7964e0439d60ad893cd021563c4ea7c6"
+        },
+        {
+            "date": 1529048437014,
+            "name": "db-2018-06-15.log",
+            "hash": "1e7275f3210e60ea8ee7d494b6076b24"
+        },
+        {
+            "date": 1529048481050,
+            "name": "broker-2018-06-15.log",
+            "hash": "a938b657551e42450b344a96a96d98ab"
+        },
+        {
+            "date": 1529048481062,
+            "name": "db-2018-06-15.log",
+            "hash": "f68a36cced54b82eba1b2388b762b558"
+        },
+        {
+            "date": 1529048710573,
+            "name": "broker-2018-06-15.log",
+            "hash": "528109d9415d324aa0706e525050007b"
+        },
+        {
+            "date": 1529048710575,
+            "name": "db-2018-06-15.log",
+            "hash": "4eb88ea9c5e1c639a55e57cf7f97a5f8"
+        },
+        {
+            "date": 1529048776995,
+            "name": "broker-2018-06-15.log",
+            "hash": "8044098317fb51043f356ae049b1773c"
+        },
+        {
+            "date": 1529048776997,
+            "name": "db-2018-06-15.log",
+            "hash": "77b1261cd01855392b10da7caea693ee"
+        },
+        {
+            "date": 1529049454256,
+            "name": "broker-2018-06-15.log",
+            "hash": "81dd9dc8de87160dcd69ab62dc7cffb5"
+        },
+        {
+            "date": 1529049454259,
+            "name": "db-2018-06-15.log",
+            "hash": "d1daa2aeaf4dafda79187caa7671fe96"
+        },
+        {
+            "date": 1529049548527,
+            "name": "broker-2018-06-15.log",
+            "hash": "cf5ee9700281ade10e84d4dbfe1a7eda"
+        },
+        {
+            "date": 1529049548538,
+            "name": "db-2018-06-15.log",
+            "hash": "124dd7f4b68409be7b7d19cf7ce9adba"
+        },
+        {
+            "date": 1529050343860,
+            "name": "broker-2018-06-15.log",
+            "hash": "9ea10873c6bc05a3ec96d83659ebc109"
+        },
+        {
+            "date": 1529050343871,
+            "name": "db-2018-06-15.log",
+            "hash": "15ed812ed0355158c64ee1618614d3e0"
+        }
+    ]
+}

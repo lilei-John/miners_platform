@@ -1,0 +1,21 @@
+{
+  "mineName": "mine name",
+  "smtp": {
+    "host": "smtp.qq.com",
+    "port": "465",
+    "secure": "true",
+    "auth": {
+      "user": "781277528@qq.com",
+      "pass": "odiyufrlajxebfjc"
+    },
+    "from": "781277528@qq.com",
+    "to": "781277528@qq.com",
+    "period": "600",
+    "enable": true
+  },
+  "log": {
+    "outToConsole": true,
+    "logLevel": 1
+  },
+  "minerTableName": "miner"
+}

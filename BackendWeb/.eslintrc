@@ -1,0 +1,22 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    "linebreak-style": "off",
+    "prefer-const": 0,
+    "object-curly-spacing": 0,
+    "strict": 0,
+    "no-trailing-spaces": 0,
+    "no-var": 0,
+    "keyword-spacing": 0,
+    "eol-last": 0,
+    "indent": 0,
+    "eqeqeq": 0,
+    "spaced-comment": 0,
+    "semi": 0,
+    "array-bracket-spacing": 0,
+    "no-unused-vars": 0,
+    "comma-spacing": 0,
+    "space-infix-ops": 0,
+    "quotes": 0
+  }
+}
