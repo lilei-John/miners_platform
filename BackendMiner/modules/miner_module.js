@@ -43,13 +43,13 @@ var minerInfo = {
     mhs_threshould : '0',
 };
 
-var minerTable = '(id int not null,date DATETIME not null,ip varchar(32) not null,\
+var minerTable = '(id int not null AUTO_INCREMENT,date DATETIME not null,ip varchar(32) not null,\
 mac varchar(32) not null,mhs int not null,avg_mhs int not null,accept int not null,reject int not null,diff int not null,temperature int not null,boards int not null,\
 board1_mhs int not null,board1_temperate int not null,board1_frequency int not null,board1_accept int not null,board1_reject int not null,board2_mhs int not null,\
 board2_temperate int not null,board2_frequency int not null,board2_accept int not null,board2_reject int not null,board3_mhs int not null,board3_temperate int not null,\
 board3_frequency int not null,board3_accept int not null,board3_reject int not null,board4_mhs int not null,board4_temperate int not null,board4_frequency int not null,\
 board4_accept int not null,board4_reject int not null,fans int not null,fan1_status varchar(8) not null,fan1_speed int not null,fan2_status varchar(8) not null,fan2_speed int not null,\
-duration int not null,temperature_threshould int not null,mhs_threshould int not null)';
+duration int not null,temperature_threshould int not null,mhs_threshould int not null,PRIMARY KEY (`id`))';
 
 exports.minerInfo = minerInfo;
 exports.minerTable = minerTable;

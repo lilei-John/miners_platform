@@ -121,7 +121,7 @@ export default {
   computed: {
     searchQueryText () {
       if (this.searchText) {
-        return this.select + '=' + this.searchText
+        return this.select + '=' + encodeURIComponent(this.searchText)
       }
       return ''
     },

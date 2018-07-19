@@ -42,11 +42,11 @@ var minersleaveInfo = {
     avg_mhs:'0',
 };
 
-var minersTable = 'create table miners(id int not null,date DATETIME not null,type varchar(64) not null,\
+var minersTable = 'create table miners(id int not null AUTO_INCREMENT,date DATETIME not null,type varchar(64) not null,\
 ip varchar(32) not null,mac varchar(32) unique not null,status varchar(8) not null,version varchar(64) not null,ip_type varchar(8) not null,\
 netmask varchar(32) not null,gateway varchar(32) not null,dns varchar(32) not null,periodic_time int not null,pool1_status varchar(16) not null,pool1_addr varchar(64) not null,\
 pool1_miner_addr varchar(64) not null,pool1_password varchar(32) not null,pool2_status varchar(16) not null,pool2_addr varchar(64) not null,pool2_miner_addr varchar(64) not null,pool2_password varchar(32) not null,\
-pool3_status varchar(16) not null,pool3_addr varchar(64) not null,pool3_miner_addr varchar(64) not null,pool3_password varchar(32) not null,number varchar(16) not null,position varchar(64) not null,mhs int not null,avg_mhs int not null,duration int not null)';
+pool3_status varchar(16) not null,pool3_addr varchar(64) not null,pool3_miner_addr varchar(64) not null,pool3_password varchar(32) not null,number varchar(16) not null,position varchar(64) not null,mhs int not null,avg_mhs int not null,duration int not null,PRIMARY KEY (`id`))';
 
 exports.minersJoinInfo = minersJoinInfo;
 exports.minersleaveInfo = minersleaveInfo;

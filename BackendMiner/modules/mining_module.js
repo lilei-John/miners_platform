@@ -12,7 +12,7 @@ var miningInfo = {
     humidity : '0',
 };
 
-var miningTable = 'create table mining(id int not null,date DATETIME not null,mhs int not null,normal int not null,abnormal int not null,total int not null,temperature int not null,humidity int not null)';
+var miningTable = 'create table mining(id int not null AUTO_INCREMENT,date DATETIME not null,mhs int not null,normal int not null,abnormal int not null,total int not null,temperature int not null,humidity int not null,PRIMARY KEY (`id`))';
 
 exports.miningInfo = miningInfo;
 exports.miningTable = miningTable;

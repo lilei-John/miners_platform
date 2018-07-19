@@ -14,6 +14,7 @@ var TABLE2 = 'miners';
 var TABLE3 = 'miner';
 var CFGPATH = '../BackendWeb/config/config.json';
 var MAILFILE = '../BackendWeb/config/mailfile.txt'
+var MAILDELAYTIME = 12*60*60*1000
 
 //cfg
 var platfromCfg = 
@@ -80,3 +81,4 @@ exports.MAILFILE = MAILFILE;
 exports.platfromCfg = platfromCfg;
 exports.BwGetSmtpCfg = BwGetSmtpCfg;
 exports.BwGetLogCfg = BwGetLogCfg;
+exports.MAILDELAYTIME = MAILDELAYTIME;

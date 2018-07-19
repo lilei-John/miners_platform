@@ -44,8 +44,6 @@ for(var devName in interfaces){
 var connection = mysqlHandle.BwMysqlCreate(dbminers);
 var eventEmitter = eventsHandle.BwEventsEmitterCreate();
 
-var miners_id = 0;
-var miner_id = 0;
 var miningInfo = miningHandle.miningInfo;
 var totoalMiners = configHandle.TOTOAL_MINERS;
 var minersMhsMap = new Map();
@@ -292,6 +290,9 @@ server.on('published', function(packet, client) {
 					clearInterval(platfromCfg.smtp.timerHandle);
 				Smtper = smtpHandle.BwSmtpCreate(platfromCfg.smtp.host,platfromCfg.smtp.port,platfromCfg.smtp.secure,platfromCfg.smtp.auth.user,platfromCfg.smtp.auth.pass,platfromCfg.smtp.from,platfromCfg.smtp.to);
 				platfromCfg.smtp.timerHandle = setInterval(SmtpProcess,platfromCfg.smtp.period * 60 * 1000);//邮件发送间隔
+			}else if (platfromCfg.smtp.enable == false){
+				if (platfromCfg.smtp.timerHandle != undefined)
+					clearInterval(platfromCfg.smtp.timerHandle);
 			}		
 		}else if (topic == 'log_config'){
 			//配置log
@@ -354,6 +355,7 @@ function setup() {
 		mysqlHandle.BwMysqlCreateTable(connection,sql_mining_table);
 		mysqlHandle.BwMysqlCreateTable(connection,sql_miners_table);
 		mysqlHandle.BwMysqlCreateTable(connection,'create table miner'+sql_miner_table);
+		mysqlHandle.DBTableIndexSetHandle = setInterval(createTableIndex,100)//100ms
 		mysqlHandle.BwMysqlLogSet(db_logger);
 
 		connection.query('show tables', function(error, result){
@@ -387,7 +389,7 @@ function setup() {
 
 		//getMinintTableInfo();
 		
-		setInterval(updateMiningTable,10*1000,connection);//10s
+		setInterval(updateMiningTable,15*1000,connection);//15s
 		
 		createWebsocketServer();
 		setInterval(WebsocketServerProcess,1*1000);//1s
@@ -395,11 +397,20 @@ function setup() {
 		setInterval(SelectMinerTableCount,60*1000);//1min
 }
 
+//create table index after create table
+function createTableIndex()
+{
+	mysqlHandle.BwMysqlCreateIndex(connection,'CREATE INDEX mining_index_id ON mining (date)');
+	mysqlHandle.BwMysqlCreateIndex(connection,'CREATE INDEX miners_index_id ON miners (mac)');
+	mysqlHandle.BwMysqlCreateIndex(connection,'CREATE INDEX miner_index_id ON miner (mac,date)');
+	if (mysqlHandle.DBTableIndexSetHandle != undefined)
+		clearInterval(mysqlHandle.DBTableIndexSetHandle);
+}
 //get minint table info
 function getMinintTableInfo()
 {
 	//paas刚上线时统计开机前离线的,待矿机上线后再更新
-	var Sql = 'select * from miners where status='+ '\''+ 'offline'+'\'';
+	var Sql = 'select count(*) from miners where status='+ '\''+ 'offline'+'\'';
 	console.log('sql =  ',Sql);
 	connection.query(Sql, function(error, result){
 		if (result){
@@ -418,7 +429,6 @@ function getMinintTableInfo()
 function updateMiningTable(connection)
 {
 	//mining info
-	miningInfo.id++;
 	miningInfo.temperature = '37';
 	miningInfo.humidity = '10';
 
@@ -498,10 +508,11 @@ function SmtpProcess()
 		}else if(status == 2){//alert
 			for (var value of smtpMap.values()) {
 				//if the alert miners have already send mail with same erro,then send mail after 12 hours.
-				if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) <= 12*60*60*1000){
+				if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) <= configHandle.MAILDELAYTIME){
 					flag = 1;
-					BwLoggerOut(broker_logger,'IP: '+ip+' MAC: '+mac+' ERRNO: '+errno+' have already send mail,pls wait 12h','warn',__filename,__line);
-					break;
+					BwLoggerOut(broker_logger,'IP: '+ip+' MAC: '+mac+' ERRNO: '+errno+' have already send mail,pls wait '+configHandle.MAILDELAYTIME,'warn',__filename,__line);	
+				} else if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) > configHandle.MAILDELAYTIME){
+					flag = 2;
 				}
 			}
 			if (0 == flag){
@@ -515,10 +526,11 @@ function SmtpProcess()
 		}else if (status == 0){//leave
 			for (var value of smtpMap.values()) {
 				//if the alert miners have already send mail with same erro,then send mail after 12 hours.
-				if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) <= 12*60*60*1000){
+				if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) <= configHandle.MAILDELAYTIME){
 					flag = 1;
-					BwLoggerOut(broker_logger,'IP: '+ip+' MAC: '+mac+' ERRNO: '+errno+' have already send mail,pls wait 12h','warn',__filename,__line);
-					break;
+					BwLoggerOut(broker_logger,'IP: '+ip+' MAC: '+mac+' ERRNO: '+errno+' have already send mail,pls wait '+configHandle.MAILDELAYTIME,'warn',__filename,__line);	
+				} else if (value.mac == mac && value.errno == errno && (Date.now() - Date.parse(new Date(time))) > configHandle.MAILDELAYTIME){
+					flag = 2;
 				}
 			}
 			if (0 == flag){
@@ -529,6 +541,17 @@ function SmtpProcess()
 				var msg = 'IP: '+ip+' MAC: '+mac+' ERRNO: '+errno+' DATE: '+time+'\n';
 				mailMsg += msg;
 			}
+		}
+		//wait time > mail_delay_time ,recyle errno time
+		if (flag == 2){
+			var minersMhsInfo = {mac:'',ip:'',mhs:'',timestamp:'',status:'',errno:''};
+			minersMhsInfo.mac = mac;
+			minersMhsInfo.ip = ip;
+			minersMhsInfo.timestamp = dateTime.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+			minersMhsInfo.status = status;
+			minersMhsInfo.errno = errno;
+			minersMhsInfo.mhs = value.mhs;
+			minersMhsMap.set(mac,minersMhsInfo);
 		}
 	}
 	if (mailMsg != undefined && mailMsg != ''){
@@ -570,12 +593,12 @@ function SelectMinerTableCount()
 
 			if (miner_table_num == 1){
 				miner_table_name = 'miner';
-				Sql = 'select * from miner';
+				Sql = 'select count(*) from miner';
 				g_miner_table = miner_table_name;
 			}
 			else if (miner_table_num > 1){
 				miner_table_name = 'miner'+parseInt(miner_table_num-1);
-				Sql = 'select * from miner'+parseInt(miner_table_num-1);
+				Sql = 'select count(*) from miner'+parseInt(miner_table_num-1);
 				g_miner_table = miner_table_name;
 			}
 			BwLoggerOut(db_logger,'current miner table is '+g_miner_table,'error',__filename,__line);
@@ -584,11 +607,11 @@ function SelectMinerTableCount()
 					BwLoggerOut(db_logger,'select sql: '+Sql+' err msg: '+error.message,'error',__filename,__line);
 		
 				}else{
-					BwLoggerOut(db_logger,'select sql: '+Sql+' length: '+result.length,'error',__filename,__line);
+					BwLoggerOut(db_logger,'select sql: '+Sql+' length: '+result[0]["count(*)"],'error',__filename,__line);
 				}
 
 				if (result){
-					if (result.length >= 100*10*1000){
+					if (result[0]["count(*)"] >= 100*10*1000){
 						BwLoggerOut(db_logger,'select table counts larger than 100*10*1000,need to switch tables '+' select sql: '+Sql,'error',__filename,__line);
 						if (miner_table_num >= 1){
 							miner_table_name = 'miner'+parseInt(miner_table_num);
@@ -596,6 +619,8 @@ function SelectMinerTableCount()
 						}
 						BwLoggerOut(db_logger,'switch miner table ','create table '+miner_table_name+sql_miner_table,'error',__filename,__line);
 						mysqlHandle.BwMysqlCreateTable(connection,'create table '+miner_table_name+sql_miner_table);
+						var table_index = 'CREATE INDEX miner_index_id ON '+miner_table_name+' (mac,date)';
+						mysqlHandle.BwMysqlCreateIndex(connection,table_index);
 						var msg = {
 							topic: 'switch_miner_table',
 							payload: miner_table_name,

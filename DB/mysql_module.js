@@ -6,6 +6,7 @@ var eventsHandle = require('../BackendMiner/modules/events_module');
 var logHandle = require('../BackendMiner/modules/log_module');
 var BwLoggerOut = logHandle.BwLoggerOut;
 var DBLogger;
+var DBTableIndexSetHandle;
 
 var mysqlDBInfo = 
 {
@@ -76,6 +77,23 @@ function BwMysqlCreateTable(connection,sql)
                 throw err
         }else{
             BwLoggerOut(DBLogger,'table create suecess.','info',__filename,__line);
+        }
+    });
+}
+
+//create index
+function BwMysqlCreateIndex(connection,sql)
+{
+    connection.query(sql, function(err,result){
+        if(err){
+            if (err.code == 'ER_DUP_KEYNAME')//ER_DUP_KEYNAME
+            {
+                BwLoggerOut(DBLogger,'ER_DUP_KEYNAME,index exists.','warn',__filename,__line);
+            }
+            else
+                throw err
+        }else{
+            BwLoggerOut(DBLogger,'index create suecess.','info',__filename,__line);
         }
     });
 }
@@ -428,3 +446,5 @@ exports.BwMysqlCreateTable = BwMysqlCreateTable;
 exports.BwMysqlQuery = BwMysqlQuery;
 exports.BwMysqlDisConnect = BwMysqlDisConnect;
 exports.BwMysqlLogSet = BwMysqlLogSet;
+exports.BwMysqlCreateIndex = BwMysqlCreateIndex;
+exports.DBTableIndexSetHandle = DBTableIndexSetHandle;
